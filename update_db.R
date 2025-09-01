@@ -6,13 +6,17 @@ library(cfbfastR)
 library(DBI)
 library(RSQLite)
 library(glue) # Excellent for building SQL queries safely
+library(dotenv)
 
-# --- 2. Setup ---
-# Set your working directory and API key
 setwd("/Users/jaketolleson/Library/CloudStorage/GoogleDrive-jaketolleson7@gmail.com/My Drive/01_Projects/CFB/sim_package")
 
+# This loads the variables from the .env file in your project directory
+load_dot_env()
+
+# --- 2. Setup ---
+
 # Define constants
-DB_PATH <- '/Users/jaketolleson/Library/CloudStorage/GoogleDrive-jaketolleson7@gmail.com/My Drive/01_Projects/CFB/sim_package/cfb_pbp_db'
+DB_PATH <- Sys.getenv("db_dir")
 START_YEAR <- 2014
 
 # --- Define the true College Football Season Year ---
